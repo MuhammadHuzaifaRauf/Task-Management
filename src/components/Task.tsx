@@ -21,20 +21,14 @@ const Task = observer(({ id, title, description, status }: TaskProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative bg-white p-4 rounded shadow mt-1 border-b border-slate-300 max-w-2xl">
+    <div className="relative bg-white p-4 rounded shadow-md mt-1 border-b border-slate-300 max-w-2xl">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-medium">{title}</h3>
 
         <div className="flex gap-1 sm:gap-3">
-          <Dialog
-            open={open}
-            onOpenChange={setOpen}
-          >
+          <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-              >
+              <Button variant="ghost" size="icon">
                 <Pencil2Icon className="w-5 h-5 text-blue-500" />
               </Button>
             </DialogTrigger>
