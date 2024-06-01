@@ -8,17 +8,11 @@ import EditTask from "./EditTask";
 import { useState } from "react";
 import { useStore } from "@/stores/StoreProvider";
 import { observer } from "mobx-react-lite";
-
-interface TaskProps {
-  id: string;
-  title: string;
-  description: string;
-  status: string;
-}
+import { TaskProps } from "../../types/types";
+import useTask from "../../hooks/useTask";
 
 const Task = observer(({ id, title, description, status }: TaskProps) => {
-  const { taskStore } = useStore();
-  const [open, setOpen] = useState(false);
+  const { taskStore, open, setOpen } = useTask();
 
   return (
     <div className="relative bg-white p-4 rounded shadow-md mt-1 border-b border-slate-300 max-w-2xl">
