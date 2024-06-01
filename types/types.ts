@@ -8,3 +8,10 @@ export interface EditTaskProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
+
+export interface TaskProps {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+}

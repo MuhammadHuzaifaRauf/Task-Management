@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import useTaskFilter from "../../hooks/useTaskFilter";
 
-interface TaskFilterProps {}
-
-const TaskFilter = ({}: TaskFilterProps) => {
-  const searchParams = useSearchParams();
-  const tasksFilter = searchParams.get("tasks");
+const TaskFilter = () => {
+  const { tasksFilter } = useTaskFilter();
 
   return (
     <div className="mb-4">
