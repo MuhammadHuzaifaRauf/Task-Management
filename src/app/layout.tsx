@@ -1,6 +1,7 @@
 import { Lexend } from "next/font/google";
 import "@/styles/globals.css";
 import { StoreProvider } from "@/stores/StoreProvider";
+import ToastProvider from "@/lib/ToastProvider";
 
 const inter = Lexend({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`bg-slate-100 ${inter.className}`}>
+        <ToastProvider />
         <StoreProvider>
           <main className="container">{children}</main>
         </StoreProvider>

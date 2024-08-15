@@ -22,7 +22,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/Select";
-import { useStore } from "@/stores/StoreProvider";
 import useAddTask from "../../hooks/useAddTask";
 
 const AddTask = observer(() => {

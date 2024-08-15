@@ -29,6 +29,14 @@ const TaskList = observer(() => {
     );
   }
 
+  const noTasksMessage = `No tasks are in the ${tasksFilter === "pending"
+    ? "Pending"
+    : tasksFilter === "in_progress"
+    ? "In Progress"
+    : tasksFilter === "completed"
+    ? "Completed"
+    : "selected"} status.`;
+
   return (
     <div className="">
       <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between mb-8 sm:mb-14">
@@ -49,15 +57,19 @@ const TaskList = observer(() => {
       <TaskFilter />
 
       <div className="flex flex-col gap-2 px-4 py-5 max-h-[600px] overflow-auto">
-        {filteredTasks.map((task: any) => (
-          <Task
-            key={task.id}
-            id={task.id}
-            title={task.title}
-            description={task.description}
-            status={task.status}
-          />
-        ))}
+        {filteredTasks.length === 0 ? (
+          <p className="text-gray-500">{noTasksMessage}</p>
+        ) : (
+          filteredTasks.map((task: any) => (
+            <Task
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              description={task.description}
+              status={task.status}
+            />
+          ))
+        )}
       </div>
     </div>
   );

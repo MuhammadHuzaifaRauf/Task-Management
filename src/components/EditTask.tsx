@@ -20,6 +20,7 @@ import {
 } from "./ui/Select";
 import { useStore } from "@/stores/StoreProvider";
 import { EditTaskProps } from "../../types/types";
+import { Toast } from "./toast/Toast";
 
 const EditTask = ({
   id,
@@ -41,10 +42,13 @@ const EditTask = ({
 
     if (newTitle.length < 3) {
       setError("Please enter a title with at least 3 characters");
+      Toast.error("Title must be at least 3 characters");
     } else if (newDescription.length < 3) {
       setError("Please enter a description with at least 3 characters");
+      Toast.error("Description must be at least 3 characters");
     } else if (!newStatus) {
       setError("Please select a status for the task");
+      Toast.error("Status is required");
     } else {
       const editedTask = {
         title: newTitle,
@@ -61,6 +65,7 @@ const EditTask = ({
       setError("");
       setOpen(!open);
       router.refresh();
+      Toast.success("Task edited successfully");
     }
   };
 

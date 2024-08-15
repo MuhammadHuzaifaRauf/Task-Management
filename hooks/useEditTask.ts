@@ -2,6 +2,7 @@ import { useStore } from "@/stores/StoreProvider";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { EditTaskProps } from "../types/types";
+import { Toast } from "@/components/toast/Toast";
 
 export default function useEditTask({
   title,
@@ -21,10 +22,13 @@ export default function useEditTask({
 
     if (newTitle.length < 3) {
       setError("Please enter a title with at least 3 characters");
+      Toast.error("Title must be at least 3 characters");
     } else if (newDescription.length < 3) {
       setError("Please enter a description with at least 3 characters");
+      Toast.error("Description must be at least 3 characters");
     } else if (!newStatus) {
       setError("Please select a status for the task");
+      Toast.error("Status is required");
     } else {
       const editedTask = {
         title: newTitle,
@@ -41,6 +45,7 @@ export default function useEditTask({
       setError("");
       setOpen(!open);
       router.refresh();
+      Toast.success("Task edited successfully");
     }
   };
   return {

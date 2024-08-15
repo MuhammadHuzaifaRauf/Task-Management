@@ -5,8 +5,6 @@ import { Badge } from "./ui/Badge";
 import { Button } from "./ui/Button";
 import { Dialog, DialogTrigger } from "./ui/Dialog";
 import EditTask from "./EditTask";
-import { useState } from "react";
-import { useStore } from "@/stores/StoreProvider";
 import { observer } from "mobx-react-lite";
 import { TaskProps } from "../../types/types";
 import useTask from "../../hooks/useTask";

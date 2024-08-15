@@ -1,3 +1,4 @@
+import { Toast } from "@/components/toast/Toast";
 import { types, Instance, SnapshotIn, onSnapshot } from "mobx-state-tree";
 
 export const TaskModel = types.model("Task", {
@@ -28,11 +29,18 @@ export const TaskStore = types
         }
       },
       deleteTask(taskId: string) {
-        const taskIndex = self.tasks.findIndex((task) => task.id === taskId);
-        if (taskIndex !== -1) {
-          self.tasks.splice(taskIndex, 1);
+        try {
+          const taskIndex = self.tasks.findIndex((task) => task.id === taskId);
+          if (taskIndex !== -1) {
+            self.tasks.splice(taskIndex, 1);
+            Toast.success("Task deleted successfully");
+          } else {
+            Toast.error("Task not found"); 
+          }
+        } catch (error) {
+          Toast.error("Failed to delete task"); 
         }
-      },
+      }
     };
   });
 
